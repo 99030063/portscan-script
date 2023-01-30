@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo -e "Which scan do you want to run"
 CHOICE=0
 echo "1. TCP IPv4"
@@ -40,5 +39,29 @@ while [ $CHOICE -eq 0 ]; do
     esac
 done
 
-echo "while loop gesloten"
+echo "DEBUG 'Choice made' "
+VAR=1
+while [ $VAR -eq 1] ; do
+    read -p "What IP address do you want to use for the TCP IPv4 Portscan?" TCP4
+    while true ; do
+    read -p "You typed [$TCP4], is this correct? (y/n) " yn
+        case $yn in
+            [yY] ) echo "ok, we will proceed";
+                VAR=0
+                break
+                ;;
+            [nN] ) echo "Allright, let's try again";
+                VAR=1
+                break
+                ;;
+            * ) echo "invalid response";
+                continue;;
+        esac
+    done
+done
+echo "DEBUG  'IP Confirmed' "
+
+
+
+
 
