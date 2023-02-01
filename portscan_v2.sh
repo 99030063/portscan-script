@@ -46,8 +46,8 @@ done
 
 echo "DEBUG 'Choice made' $CHOICE"
 
-VAR=1
 ipQuestion(){
+    VAR=1
     while [ $VAR -eq 1 ] ; do
         read -p "What IP address do you want to use for the $1 Portscan?" IP
         while true ; do
@@ -72,7 +72,7 @@ ipQuestion(){
 if [ $CHOICE == 5 ]; then
     for i in "${scanARRAY[@]}"; do
         echo "test: $i"
-        # ipQuestion $scanARRAY[$i]
+        ipQuestion $scanARRAY[$i]
     done
 elif [ $CHOICE -ge 1 ] && [ $CHOICE -le 4 ]; then
     echo "singel test DEBUG"
