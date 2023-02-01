@@ -73,7 +73,7 @@ ipQuestion(){
 
 if [ $CHOICE == 5 ]; then
     for i in "${scanARRAY[@]}"; do
-        ipQuestion
+        ipQuestion $scanARRAY[$i]
     done
 fi
 
