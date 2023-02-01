@@ -73,7 +73,7 @@ ipQuestion(){
 if [ $CHOICE == 5 ]; then
     for i in "${scanARRAY[@]}"; do
         echo "test: $i"
-        ipQuestion $scanARRAY[$i]
+        ipQuestion $scanARRAY
     done
 elif [ $CHOICE -ge 1 ] && [ $CHOICE -le 4 ]; then
     echo "singel test DEBUG"
