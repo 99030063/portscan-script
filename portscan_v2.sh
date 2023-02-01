@@ -45,7 +45,7 @@ while [ $CHOICE -eq 0 ]; do
 done
 
 echo "DEBUG 'Choice made' $CHOICE"
-
+ipARRAY
 ipQuestion(){
     VAR=1
     while [ $VAR -eq 1 ] ; do
@@ -56,7 +56,7 @@ ipQuestion(){
             case $yn in
                 [yY] ) echo "ok, we will proceed";
                     VAR=0
-                    ipARRAY[${ipARRAY[@]}]=IP
+                    ipARRAY+=($IP)
                     echo $ipARRAY
                     break
                     ;;
