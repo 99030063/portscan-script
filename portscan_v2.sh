@@ -70,7 +70,7 @@ ipQuestion(){
         done
     done
 }
-ipQuestion()
+ipQuestion
 
 # if [ $CHOICE -eq 5 ] then
 #     for i in "${scanARRAY[@]}"
