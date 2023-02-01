@@ -45,7 +45,7 @@ while [ $CHOICE -eq 0 ]; do
 done
 
 echo "DEBUG 'Choice made' $CHOICE"
-ipARRAY
+ipARRAY=()
 ipQuestion(){
     VAR=1
     while [ $VAR -eq 1 ] ; do
