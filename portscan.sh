@@ -87,7 +87,8 @@ if [ $CHOICE == 5 ]; then
     #     done
 elif [ $CHOICE -ge 1 ] && [ $CHOICE -le 4 ]; then
     ipQuestion "$SCAN"
-    echo "single test DEBUG"
+    echo "This test will be run: "
+    echo "Test: "$SCAN" - IP: "${ipARRAY[@]}" "
 fi
 
 # if [ $CHOICE -eq 5 ] then
