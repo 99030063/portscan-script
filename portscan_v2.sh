@@ -49,7 +49,7 @@ echo "DEBUG 'Choice made' $CHOICE"
 VAR=1
 ipQuestion(){
     while [ $VAR -eq 1 ] ; do
-        read -p "What IP address do you want to use for the $i Portscan?" IP
+        read -p "What IP address do you want to use for the $1 Portscan?" IP
         while true ; do
         read -p "You typed [$IP], is this correct? (y/n) " yn
             case $yn in
@@ -70,7 +70,7 @@ ipQuestion(){
 }
 
 if [ $CHOICE == 5 ]; then
-    for i in "${scanARRAY[@]}"; do
+    for i in $scanARRAY; do
         ipQuestion $scanARRAY[$i]
     done
 fi
