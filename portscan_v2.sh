@@ -50,7 +50,7 @@ ipARRAY=()
 
 VAR=1
 ipQuestion(){
-    while [ $VAR-eq 1] ; do
+    while [ $VAR-eq 1 ] ; do
         read -p "What IP address do you want to use for the $1 Portscan?" IP
         while true ; do
         read -p "You typed [$IP], is this correct? (y/n) " yn
