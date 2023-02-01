@@ -44,7 +44,7 @@ while [ $CHOICE -eq 0 ]; do
     esac
 done
 
-echo "DEBUG 'Choice made' "
+echo "DEBUG 'Choice made' $CHOICE"
 
 ipARRAY=()
 
@@ -70,53 +70,54 @@ ipQuestion(){
         done
     done
 }
+ipQuestion()
 
-if [ $CHOICE -eq 5 ] then
-    for i in "${scanARRAY[@]}"
-    do
-        #ipQuestion($i)
-        echo $i
-    done
-else
-    echo "DEBUG 'test else'"
-    ipQuestion($SCAN)
-fi
+# if [ $CHOICE -eq 5 ] then
+#     for i in "${scanARRAY[@]}"
+#     do
+#         #ipQuestion($i)
+#         echo $i
+#     done
+# else
+#     echo "DEBUG 'test else'"
+#     ipQuestion($SCAN)
+# fi
 
-echo "DEBUG  'IP Confirmed' "
+# echo "DEBUG  'IP Confirmed' "
 
-if [ $CHOICE == 5 ]; then
-    echo "Alle testen worden uitgevoerd"
-            NOW='TCP_IPv4_$(date +"%Y%m%d")'
-            nmap -sS -p 21 $ipARRAY["$CHOICE-5"] -T4 --min-rate=1000 >> $NOW.txt
-            ;;
-            NOW='TCP_IPv6_$(date +"%Y%m%d")'
-            nmap -sS -6 -p 21 $ipARRAY["$CHOICE-4"] -T4 --min-rate=1000 >> $NOW.txt
-            ;;
-            NOW='UDP_IPv4_$(date +"%Y%m%d")'
-            nmap -sUV -p 21 -P0 $ipARRAY["$CHOICE-3"] -T4 --version-intensity=2 --min-rate=1000 >> $NOW.txt
-            ;;
-            NOW='UDP_IPv6_$(date +"%Y%m%d")'
-            nmap -sUV -6 -p 21 -P0 $ipARRAY["$CHOICE-2"] -T4 --version-intensity=2 --min-rate=1000 >> $NOW.txt
+# if [ $CHOICE == 5 ]; then
+#     echo "Alle testen worden uitgevoerd"
+#             NOW='TCP_IPv4_$(date +"%Y%m%d")'
+#             nmap -sS -p 21 $ipARRAY["$CHOICE-5"] -T4 --min-rate=1000 >> $NOW.txt
+#             ;;
+#             NOW='TCP_IPv6_$(date +"%Y%m%d")'
+#             nmap -sS -6 -p 21 $ipARRAY["$CHOICE-4"] -T4 --min-rate=1000 >> $NOW.txt
+#             ;;
+#             NOW='UDP_IPv4_$(date +"%Y%m%d")'
+#             nmap -sUV -p 21 -P0 $ipARRAY["$CHOICE-3"] -T4 --version-intensity=2 --min-rate=1000 >> $NOW.txt
+#             ;;
+#             NOW='UDP_IPv6_$(date +"%Y%m%d")'
+#             nmap -sUV -6 -p 21 -P0 $ipARRAY["$CHOICE-2"] -T4 --version-intensity=2 --min-rate=1000 >> $NOW.txt
 
-elif [[ $CHOICE -ge 1 ]] && [[ $CHOICE -le 4 ]]; then
-    case $CHOICE in
-        1)
-            NOW='TCP_IPv4_$(date +"%Y%m%d")'
-            nmap -sS -p 21-22 $ipARRAY[0] -T4 --min-rate=1000 >> $NOW.txt
-            ;;
-        2)
-            NOW='TCP_IPv6_$(date +"%Y%m%d")'
-            nmap -sS -6 -p 1-65535 $ipARRAY[0] -T4 --min-rate=1000 >> $NOW.txt
-            ;;
-        3)
-            NOW='UDP_IPv4_$(date +"%Y%m%d")'
-            nmap -sUV -p 1-65535 -P0 $ipARRAY[0] -T4 --version-intensity=2 --min-rate=1000 >> $NOW.txt
-            ;;
-        4)
-            NOW='UDP_IPv6_$(date +"%Y%m%d")'
-            nmap -sUV -6 -p 1-65535 -P0 $ipARRAY[0] -T4 --version-intensity=2 --min-rate=1000 >> $NOW.txt            
-            ;;
-    esac
-fi
+# elif [[ $CHOICE -ge 1 ]] && [[ $CHOICE -le 4 ]]; then
+#     case $CHOICE in
+#         1)
+#             NOW='TCP_IPv4_$(date +"%Y%m%d")'
+#             nmap -sS -p 21-22 $ipARRAY[0] -T4 --min-rate=1000 >> $NOW.txt
+#             ;;
+#         2)
+#             NOW='TCP_IPv6_$(date +"%Y%m%d")'
+#             nmap -sS -6 -p 1-65535 $ipARRAY[0] -T4 --min-rate=1000 >> $NOW.txt
+#             ;;
+#         3)
+#             NOW='UDP_IPv4_$(date +"%Y%m%d")'
+#             nmap -sUV -p 1-65535 -P0 $ipARRAY[0] -T4 --version-intensity=2 --min-rate=1000 >> $NOW.txt
+#             ;;
+#         4)
+#             NOW='UDP_IPv6_$(date +"%Y%m%d")'
+#             nmap -sUV -6 -p 1-65535 -P0 $ipARRAY[0] -T4 --version-intensity=2 --min-rate=1000 >> $NOW.txt            
+#             ;;
+#     esac
+# fi
 
 
