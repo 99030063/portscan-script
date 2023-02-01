@@ -73,6 +73,8 @@ if [ $CHOICE == 5 ]; then
     for i in $scanARRAY; do
         ipQuestion $scanARRAY[$i]
     done
+elif [ $CHOICE -ge 1 ] && [ $CHOICE -le 4 ]
+    echo "singel test DEBUG"
 fi
 
 # if [ $CHOICE -eq 5 ] then
