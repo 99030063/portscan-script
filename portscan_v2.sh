@@ -57,7 +57,7 @@ ipQuestion(){
                 [yY] ) echo "ok, we will proceed";
                     VAR=0
                     echo $IP
-                    ipARRAY+=($IP)
+                    ipARRAY[${ipARRAY[@]}]="$IP"
                     echo $ipARRAY
                     break
                     ;;
