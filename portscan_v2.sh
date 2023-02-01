@@ -70,7 +70,7 @@ ipQuestion(){
 }
 
 if [ $CHOICE == 5 ]; then
-    for i in $scanARRAY; do
+    for (( i=0; i<=3; i++ )); do
         ipQuestion $scanARRAY[$i]
     done
 elif [ $CHOICE -ge 1 ] && [ $CHOICE -le 4 ]; then
