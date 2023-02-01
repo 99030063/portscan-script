@@ -49,27 +49,31 @@ echo "DEBUG 'Choice made' $CHOICE"
 ipARRAY=()
 
 VAR=1
-ipQuestion(){
-    while [ $VAR -eq 1 ] ; do
-        read -p "What IP address do you want to use for the $1 Portscan?" IP
-        while true ; do
-        read -p "You typed [$IP], is this correct? (y/n) " yn
-            case $yn in
-                [yY] ) echo "ok, we will proceed";
-                    VAR=0
-                    ipARRAY[${ipARRAY[@]}]=IP
-                    break
-                    ;;
-                [nN] ) echo "Allright, let's try again";
-                    VAR=1
-                    break
-                    ;;
-                * ) echo "invalid response";
-                    continue;;
-            esac
+for i in "${scanARRAY[@]}"
+do
+    ipQuestion(){
+        while [ $VAR -eq 1 ] ; do
+            read -p "What IP address do you want to use for the $i Portscan?" IP
+            while true ; do
+            read -p "You typed [$IP], is this correct? (y/n) " yn
+                case $yn in
+                    [yY] ) echo "ok, we will proceed";
+                        VAR=0
+                        ipARRAY[${ipARRAY[@]}]=IP
+                        break
+                        ;;
+                    [nN] ) echo "Allright, let's try again";
+                        VAR=1
+                        break
+                        ;;
+                    * ) echo "invalid response";
+                        continue;;
+                esac
+            done
         done
-    done
-}
+    }
+done
+
 ipQuestion
 
 # if [ $CHOICE -eq 5 ] then
