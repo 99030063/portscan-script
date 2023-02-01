@@ -54,7 +54,7 @@ ipQuestion(){
         while true ; do
         read -p "You typed [$IP], is this correct? (y/n) " yn
             case $yn in
-                [yY] ) echo "ok, we will proceed";
+                [yY] ) echo "Confirmed";
                     VAR=0
                     ipARRAY=(${ipARRAY[@]} "$IP")
                     break
@@ -76,8 +76,9 @@ if [ $CHOICE == 5 ]; then
         ipQuestion $i
         # echo "Alle testen worden uitgevoerd met deze ip's: "
     done
+    echo "These tests will be run with these IP Addresses"
     for value in "${ipARRAY[@]}"; do
-            echo "IP: $value" "Test: $i"
+            echo "Test: $i - IP: $value" 
         done
 elif [ $CHOICE -ge 1 ] && [ $CHOICE -le 4 ]; then
     ipQuestion "$SCAN"
