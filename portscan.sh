@@ -79,7 +79,7 @@ if [ $CHOICE == 5 ]; then
     echo "These tests will be run with these IP Addresses"
     for i in {0..3}
     do
-        echo "Test: "$scanARRAY[$i]" - IP: "$ipARRAY[$i]"" 
+        echo "Test: "${scanARRAY[@]}" - IP: "$ipARRAY{[@]}"" 
     done
     
     # for value in "${ipARRAY[@]}"; do
