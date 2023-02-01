@@ -74,10 +74,10 @@ if [ $CHOICE == 5 ]; then
         echo "test: $i"
         ipQuestion $i
         echo "Alle testen worden uitgevoerd met deze ip's: "
-        for value in "${ipARRAY[@]}"; do
+    done
+    for value in "${ipARRAY[@]}"; do
             echo "IP: $value"
         done
-    done
 elif [ $CHOICE -ge 1 ] && [ $CHOICE -le 4 ]; then
     ipQuestion "$SCAN"
     echo "single test DEBUG"
