@@ -46,8 +46,6 @@ done
 
 echo "DEBUG 'Choice made' $CHOICE"
 
-ipARRAY=()
-
 VAR=1
 ipQuestion(){
     while [ $VAR -eq 1 ] ; do
