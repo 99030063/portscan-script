@@ -49,6 +49,7 @@ echo "DEBUG 'Choice made' $CHOICE"
 ipQuestion(){
     VAR=1
     while [ $VAR -eq 1 ] ; do
+        echo $1
         read -p "What IP address do you want to use for the $1 Portscan?" IP
         while true ; do
         read -p "You typed [$IP], is this correct? (y/n) " yn
