@@ -78,7 +78,7 @@ if [ $CHOICE == 5 ]; then
     done
     echo "These tests will be run with these IP Addresses"
     for value in "${ipARRAY[@]}"; do
-            echo "Test: "$scanARRAY[value]" - IP: $value" 
+            echo "Test: "$scanARRAY[$value]" - IP: $value" 
         done
 elif [ $CHOICE -ge 1 ] && [ $CHOICE -le 4 ]; then
     ipQuestion "$SCAN"
