@@ -14,22 +14,27 @@ while [ $CHOICE -eq 0 ]; do
         1)
             SCAN="TCP IPv4"
             echo $SCAN
+            CHOICE=1
             ;;
         2)
             SCAN="TCP IPv6"
             echo $SCAN
+            CHOICE=2
             ;;
         3)
             SCAN="UDP IPv4"
             echo $SCAN
+            CHOICE=3
             ;;
         4)
             SCAN="UDP IPv6"
             echo $SCAN
+            CHOICE=4
             ;;
         5)
             echo "all of the above"
             scanARRAY=("TCP IPv4" "TCP IPv6" "UDP IPv4" "UDP IPv6")
+            CHOICE=5
             ;;
     #add more options here (for future reference)
         *)
