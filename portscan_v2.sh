@@ -33,7 +33,7 @@ while [ $CHOICE -eq 0 ]; do
             ;;
         5)
             echo "all of the above"
-            scanARRAY=("TCP IPv4" "TCP IPv6" "UDP IPv4" "UDP IPv6")
+            scanARRAY=('TCP IPv4' 'TCP IPv6' 'UDP IPv4' 'UDP IPv6')
             CHOICE=5
             ;;
     #add more options here (for future reference)
