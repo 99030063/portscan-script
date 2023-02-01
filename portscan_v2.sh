@@ -66,7 +66,7 @@ ipQuestion(){
     done
 }
 
-if [[ $CHOICE -eq 5 ]] then
+if [ $CHOICE -eq 5 ] then
     for i in "${scanARRAY[@]}"
     do
         #ipQuestion($i)
