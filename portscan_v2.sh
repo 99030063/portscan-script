@@ -73,6 +73,7 @@ if [ $CHOICE -eq 5 ] then
         echo $i
     done
 else
+    echo "DEBUG 'test else'"
     ipQuestion($SCAN)
 fi
 
