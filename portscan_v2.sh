@@ -49,19 +49,13 @@ ipARRAY=()
 ipQuestion(){
     VAR=1
     while [ $VAR -eq 1 ] ; do
-        echo $*
         read -p "What IP address do you want to use for the $* Portscan?" IP
         while true ; do
         read -p "You typed [$IP], is this correct? (y/n) " yn
             case $yn in
                 [yY] ) echo "ok, we will proceed";
                     VAR=0
-                    echo $IP
                     ipARRAY=(${ipARRAY[@]} "$IP")
-                            for value in "${ipARRAY[@]}"
-                            do
-                                echo $value
-                            done
                     break
                     ;;
                 [nN] ) echo "Allright, let's try again";
@@ -81,6 +75,7 @@ if [ $CHOICE == 5 ]; then
         ipQuestion $i
     done
 elif [ $CHOICE -ge 1 ] && [ $CHOICE -le 4 ]; then
+    ipQuestion "$SCAN"
     echo "singel test DEBUG"
 fi
 
