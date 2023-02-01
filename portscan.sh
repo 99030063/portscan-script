@@ -76,7 +76,7 @@ if [ $CHOICE == 5 ]; then
     done
 elif [ $CHOICE -ge 1 ] && [ $CHOICE -le 4 ]; then
     ipQuestion "$SCAN"
-    echo "singel test DEBUG"
+    echo "single test DEBUG"
 fi
 
 # if [ $CHOICE -eq 5 ] then
