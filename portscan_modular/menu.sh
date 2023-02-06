@@ -33,8 +33,7 @@ do
                 stat='bad'; 
             fi
             if $stat='bad';
-                break
-                ;;
+                break;;
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
