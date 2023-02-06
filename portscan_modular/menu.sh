@@ -27,7 +27,7 @@ do
             echo "Wat is het IPv4 adres?"
             read IPv4
             valid_ip $IPv4
-            if valid_ip $ip; then stat='good'; else stat='bad'; fi
+            if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
@@ -46,7 +46,7 @@ do
             echo "Wat is het IPv4 adres?"
             read IPv4
             valid_ip $IPv4
-            if valid_ip $ip; then stat='good'; else stat='bad'; fi
+            if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
             echo "Wat is het IPv6 adres?"
             read IPv6
@@ -59,7 +59,7 @@ do
             echo "Wat is het IPv4 adres?"
             read IPv4
             valid_ip $IPv4
-            if valid_ip $ip; then stat='good'; else stat='bad'; fi
+            if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
@@ -78,7 +78,7 @@ do
             echo "Wat is het IPv4 adres?"
             read IPv4
             valid_ip $IPv4
-            if valid_ip $ip; then stat='good'; else stat='bad'; fi
+            if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
             echo "Wat is het IPv6 adres?"
             read IPv6
@@ -91,14 +91,14 @@ do
             echo "Wat is het IPv4 LAN adres?"
             read IPv4LAN
             valid_ip $IPv4
-            if valid_ip $ip; then stat='good'; else stat='bad'; fi
+            if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
             echo "Wat is het IPv6 LAN adres?"
             read IPv6LAN
             echo "Wat is het IPv4 WAN adres?"
             read IPv4WAN
             valid_ip $IPv4
-            if valid_ip $ip; then stat='good'; else stat='bad'; fi
+            if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
             echo "Wat is het IPv6 WAN adres?"
             read IPv6WAN
