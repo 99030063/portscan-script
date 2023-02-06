@@ -27,16 +27,7 @@ do
             echo "Wat is het IPv4 adres?"
             read IPv4
             valid_ip $IPv4
-            if valid_ip $ip; then 
-                stat='good'
-            else
-                stat='bad'
-            fi
-            if $stat='bad'
-                echo "Not a valid IP"
-                break
-                ;;
-            fi
+            echo $stat
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
             ./portscan_IPv4_WAN.sh $IPv4 $Ports
@@ -53,15 +44,8 @@ do
         "Portscan WAN IPv4 and IPv6")
             echo "Wat is het IPv4 adres?"
             read IPv4
-             if valid_ip $ip; then 
-                stat='good';
-            else
-                stat='bad'; 
-            fi
-            if $stat='bad';
-                break
-                ;;
-            fi
+            valid_ip $IPv4
+            echo $stat
             echo "Wat is het IPv6 adres?"
             read IPv6
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
@@ -72,15 +56,8 @@ do
         "Portscan LAN IPv4")
             echo "Wat is het IPv4 adres?"
             read IPv4
-             if valid_ip $ip; then 
-                stat='good';
-            else
-                stat='bad'; 
-            fi
-            if $stat='bad';
-                break
-                ;;
-            fi
+            valid_ip $IPv4
+            echo $stat
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
             ./portscan_IPv4_LAN.sh $IPv4 $Ports
@@ -97,15 +74,8 @@ do
         "Portscan LAN IPv4 and IPv6")
             echo "Wat is het IPv4 adres?"
             read IPv4
-             if valid_ip $ip; then 
-                stat='good';
-            else
-                stat='bad'; 
-            fi
-            if $stat='bad';
-                break
-                ;;
-            fi
+            valid_ip $IPv4
+            echo $stat
             echo "Wat is het IPv6 adres?"
             read IPv6
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
@@ -116,28 +86,14 @@ do
         "Portscan WAN+LAN IPv4 + IPv6")
             echo "Wat is het IPv4 LAN adres?"
             read IPv4LAN
-             if valid_ip $ip; then 
-                stat='good';
-            else
-                stat='bad'; 
-            fi
-            if $stat='bad';
-                break
-                ;;
-            fi
+            valid_ip $IPv4
+            echo $stat
             echo "Wat is het IPv6 LAN adres?"
             read IPv6LAN
             echo "Wat is het IPv4 WAN adres?"
             read IPv4WAN
-             if valid_ip $ip; then 
-                stat='good';
-            else
-                stat='bad'; 
-            fi
-            if $stat='bad';
-                break
-                ;;
-            fi
+            valid_ip $IPv4
+            echo $stat
             echo "Wat is het IPv6 WAN adres?"
             read IPv6WAN
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
