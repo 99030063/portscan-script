@@ -25,4 +25,4 @@ echo -e "De ipv4 UDP WAN Portscan start nu voor het IPv4 adres $1 op de poorten 
 nmap -sUV -p $PORTS -P0 $CMIP4 -T4 --version-intensity=2 --min-rate=1000 | tee -a $FILENAME
 echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
 
-echo -e "De portscans zijn afgerond, de resultaten staan in de map /var/roald/$DIRNAME"
+echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"

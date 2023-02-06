@@ -34,7 +34,7 @@ echo -e "\n---------------------------------------------------------------------
 echo -e "De ipv6 UDP LAN Portscan start nu voor het IPv6 adres $2 op de poorten $PORTS\n" | tee -a $FILENAME
 nmap -6 -sUV -p $PORTS -P0 $2 -T4 --version-intensity=2 --min-rate=1000  | tee -a $FILENAME
 echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
-echo -e "De portscans zijn afgerond, de resultaten staan in de map /var/roald/$DIRNAME"
+echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
 
 echo -e "De ipv4 TCP WAN Portscan start nu voor het IPv4 adres $3 op de poorten $PORTS\n" | tee -a $FILENAME
 nmap -sS -p $PORTS -P0 $3 --max-retries=2 -T4 | tee -a $FILENAME
@@ -49,4 +49,4 @@ echo -e "\n---------------------------------------------------------------------
 echo -e "De ipv6 UDP WAN Portscan start nu voor het IPv6 adres $4 op de poorten $PORTS\n" | tee -a $FILENAME
 nmap -6 -sUV -p $PORTS -P0 $4 -T4 --version-intensity=2 --min-rate=1000  | tee -a $FILENAME
 echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
-echo -e "De portscans zijn afgerond, de resultaten staan in de map /var/roald/$DIRNAME"
+echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
