@@ -3,6 +3,7 @@
 # ./portscan5.sh [IPv4] [IPv6] [Poorten]
 # ./portscan5.sh 83.128.3.148 fe80::daa7:56ff:fef4:f94a 23-24
 
+CURRENTDIR=$(pwd)
 LANCMIP4=$1
 LANCMIP6=$2
 WANCMIP4=$3
