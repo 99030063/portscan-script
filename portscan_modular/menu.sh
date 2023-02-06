@@ -29,9 +29,9 @@ do
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
-            if [ $stat == 'bad'] then
+            if [ $stat == 'bad']; then
                 echo "Invalid IP"
-                break
+                break;
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
