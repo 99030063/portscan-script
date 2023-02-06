@@ -29,7 +29,7 @@ do
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
-            if [[ $stat == 'bad']] 
+            if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
                 break;
@@ -53,7 +53,7 @@ do
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
-            if [[ $stat == 'bad']] 
+            if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
                 break;
@@ -71,7 +71,7 @@ do
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
-            if [[ $stat == 'bad']] 
+            if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
                 break;
@@ -95,7 +95,7 @@ do
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
-            if [[ $stat == 'bad']] 
+            if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
                 break;
@@ -113,7 +113,7 @@ do
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
-            if [[ $stat == 'bad']] 
+            if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
                 break;
@@ -125,7 +125,7 @@ do
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
             echo $stat
-            if [[ $stat == 'bad']] 
+            if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
                 break;
