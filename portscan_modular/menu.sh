@@ -31,11 +31,10 @@ do
                 stat='good';
             else
                 stat='bad'; 
-            
-            fi
+            fi;
             if $stat='bad';
                 break
-            fi
+            fi;
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
             ./portscan_IPv4_WAN.sh $IPv4 $Ports
@@ -56,11 +55,10 @@ do
                 stat='good';
             else
                 stat='bad'; 
-            
-            fi
+            fi;
             if $stat='bad';
                 break
-            fi
+            fi;
             echo "Wat is het IPv6 adres?"
             read IPv6
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
@@ -75,11 +73,10 @@ do
                 stat='good';
             else
                 stat='bad'; 
-            
-            fi
+            fi;
             if $stat='bad';
                 break
-            fi
+            fi;
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
             ./portscan_IPv4_LAN.sh $IPv4 $Ports
@@ -100,11 +97,10 @@ do
                 stat='good';
             else
                 stat='bad'; 
-            
-            fi
+            fi;
             if $stat='bad';
                 break
-            fi
+            fi;
             echo "Wat is het IPv6 adres?"
             read IPv6
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
@@ -119,11 +115,10 @@ do
                 stat='good';
             else
                 stat='bad'; 
-            
-            fi
+            fi;
             if $stat='bad';
                 break
-            fi
+            fi;
             echo "Wat is het IPv6 LAN adres?"
             read IPv6LAN
             echo "Wat is het IPv4 WAN adres?"
@@ -132,11 +127,10 @@ do
                 stat='good';
             else
                 stat='bad'; 
-            
-            fi
+            fi;
             if $stat='bad';
                 break
-            fi
+            fi;
             echo "Wat is het IPv6 WAN adres?"
             read IPv6WAN
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
