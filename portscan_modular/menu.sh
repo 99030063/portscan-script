@@ -32,7 +32,8 @@ do
             if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
-                break;
+                break
+                ;;
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
@@ -56,7 +57,8 @@ do
             if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
-                break;
+                break
+                ;;
             fi
             echo "Wat is het IPv6 adres?"
             read IPv6
@@ -74,7 +76,8 @@ do
             if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
-                break;
+                break
+                ;;
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
@@ -98,7 +101,8 @@ do
             if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
-                break;
+                break
+                ;;
             fi
             echo "Wat is het IPv6 adres?"
             read IPv6
@@ -116,7 +120,8 @@ do
             if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
-                break;
+                break
+                ;;
             fi
             echo "Wat is het IPv6 LAN adres?"
             read IPv6LAN
@@ -128,7 +133,8 @@ do
             if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
-                break;
+                break
+                ;;
             fi
             echo "Wat is het IPv6 WAN adres?"
             read IPv6WAN
