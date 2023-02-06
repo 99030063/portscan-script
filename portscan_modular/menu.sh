@@ -28,7 +28,6 @@ do
             read IPv4
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
-            echo $stat
             if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
@@ -52,7 +51,6 @@ do
             read IPv4
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
-            echo $stat
             if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
@@ -70,7 +68,6 @@ do
             read IPv4
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
-            echo $stat
             if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
@@ -94,7 +91,6 @@ do
             read IPv4
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
-            echo $stat
             if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
@@ -112,7 +108,6 @@ do
             read IPv4LAN
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
-            echo $stat
             if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
@@ -124,7 +119,6 @@ do
             read IPv4WAN
             valid_ip $IPv4
             if valid_ip $IPv4; then stat='good'; else stat='bad'; fi
-            echo $stat
             if [ $stat == 'bad' ]
             then
                 echo "Invalid IP"
