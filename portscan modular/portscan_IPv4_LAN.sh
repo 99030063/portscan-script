@@ -5,7 +5,7 @@
 
 CMIP4=$1
 NOW=$(date +"%d_%m_%Y_%R")
-DIRNAME= $(~)/$NOW-Portscan
+DIRNAME= $(PWD)/$NOW-Portscan
 FILENAME=$DIRNAME/$NOW-portscan.txt
 
 if [ -z "$2" ]
