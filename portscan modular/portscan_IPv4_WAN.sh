@@ -3,10 +3,11 @@
 # ./portscan5.sh [IPv4] [Poorten]
 # ./portscan5.sh 83.128.3.148 23-24
 
+CURRENTDIR=$(pwd)
 CMIP4=$1
 NOW=$(date +"%d_%m_%Y_%R")
-DIRNAME= $(PWD)/$NOW-Portscan
-FILENAME=$DIRNAME/$NOW-portscan.txt
+DIRNAME= $NOW-Portscan
+FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
 
 if [ -z "$2" ]
 then
