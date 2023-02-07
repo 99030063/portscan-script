@@ -48,7 +48,7 @@ do
             if valid_ip4 $IPv4; then stat='good4'; else stat='bad4'; fi
             if [ $stat == 'bad4' ]
             then
-                echo "Invalid IP4 address"
+                echo "Invalid IPv4 address"
                 break;
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
@@ -78,7 +78,7 @@ do
             if valid_ip4 $IPv4; then stat='good4'; else stat='bad4'; fi
             if [ $stat == 'bad4' ]
             then
-                echo "Invalid IP4 address"
+                echo "Invalid IPv4 address"
                 break;
             fi
             echo "Wat is het IPv6 adres?"
@@ -87,7 +87,7 @@ do
             if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
             if [ $stat == 'bad6' ]
             then
-                echo 'Invalid IP6 address'
+                echo 'Invalid IPv6 address'
                 break;
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
@@ -102,7 +102,7 @@ do
             if valid_ip4 $IPv4; then stat='good4'; else stat='bad4'; fi
             if [ $stat == 'bad4' ]
             then
-                echo "Invalid IP4 address"
+                echo "Invalid IPv4 address"
                 break;
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
@@ -117,7 +117,7 @@ do
             if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
             if [ $stat == 'bad6' ]
             then
-                echo 'Invalid IP6 address'
+                echo 'Invalid IPv6 address'
                 break;
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
@@ -132,7 +132,7 @@ do
             if valid_ip4 $IPv4; then stat='good4'; else stat='bad4'; fi
             if [ $stat == 'bad4' ]
             then
-                echo "Invalid IP4 address"
+                echo "Invalid IPv4 address"
                 break;
             fi
             echo "Wat is het IPv6 adres?"
@@ -141,7 +141,7 @@ do
             if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
             if [ $stat == 'bad6' ]
             then
-                echo 'Invalid IP6 address'
+                echo 'Invalid IPv6 address'
                 break;
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
@@ -156,7 +156,7 @@ do
             if valid_ip4 $IPv4LAN; then stat='good4'; else stat='bad4'; fi
             if [ $stat == 'bad4' ]
             then
-                echo "Invalid IP4 address"
+                echo "Invalid IPv4 address"
                 break;
             fi
             echo "Wat is het IPv6 LAN adres?"
@@ -165,7 +165,7 @@ do
             if valid_ip6 $IPv6LAN; then stat='good6'; else stat='bad6'; fi
             if [ $stat == 'bad6' ]
             then
-                echo 'Invalid IP6 address'
+                echo 'Invalid IPv6 address'
                 break;
             fi
             echo "Wat is het IPv4 WAN adres?"
@@ -183,7 +183,7 @@ do
             if valid_ip6 $IPv6WAN; then stat='good6'; else stat='bad6'; fi
             if [ $stat == 'bad6' ]
             then
-                echo 'Invalid IP6 address'
+                echo 'Invalid IPv6 address'
                 break;
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
