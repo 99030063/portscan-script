@@ -60,7 +60,7 @@ do
             echo "Wat is het IPv6 adres?"
             read IPv6
             valid_ip6 $IPv6
-            if valid_ip6 IPv6; then stat='good6'; else stat='bad6'; fi
+            if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
             if [ $stat == 'bad6' ]
             then
                 echo 'Invalid IP6 address'
@@ -84,7 +84,7 @@ do
             echo "Wat is het IPv6 adres?"
             read IPv6
             valid_ip6 $IPv6
-            if valid_ip6 IPv6; then stat='good6'; else stat='bad6'; fi
+            if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
             if [ $stat == 'bad6' ]
             then
                 echo 'Invalid IP6 address'
