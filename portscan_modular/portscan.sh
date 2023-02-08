@@ -1,12 +1,9 @@
 #!/bin/bash
 
-
-
-function valid_ip4()
-{
+# Validates if a given IP is a correct IPv4 address
+function valid_ip4(){
     local  ip=$1
     local  stat=1
-
     if [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
         OIFS=$IFS
         IFS='.'
@@ -19,10 +16,9 @@ function valid_ip4()
     return $stat
 }
 
-function valid_ip6()
-{
+# Validates if a given IP is a correct IPv6 address
+function valid_ip6(){
     [[ $# = 0 ]] && printf "%s: Missing arguments\n" "${FUNCNAME[0]}" && return 2
-
     declare ip="${1}"
     declare re="^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|\
 ([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|\
@@ -34,14 +30,16 @@ function valid_ip6()
 (2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$"
 
     [[ "${ip}" =~ $re ]] && return 0 || return 1
-
 }
 
+# Variables that are used at every different scan
 CURRENTDIR=$(pwd)
 NOW=$(date +"%d_%m_%Y_%R")
 DIRNAME=$NOW-Portscan
 FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
 
+# Functions for every different scan included in this script. 
+# Runs the requested scan and outputs into a txt file in the user's home folder.
 function portscan_IPv4_WAN(){
     CMIP4=$1
     if [ -z "$2" ]
@@ -62,9 +60,6 @@ function portscan_IPv4_WAN(){
 
 function portscan_IPv6_WAN(){
     CMIP6=$1
-    NOW=$(date +"%d_%m_%Y_%R")
-    DIRNAME=$NOW-Portscan
-    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
     if [ -z "$2" ]
     then
         PORTS=1-65535
@@ -84,9 +79,6 @@ function portscan_IPv6_WAN(){
 function portscan_IPv4-IPv6_WAN(){
     CMIP4=$1
     CMIP6=$2
-    NOW=$(date +"%d_%m_%Y_%R")
-    DIRNAME=$NOW-Portscan
-    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
     if [ -z "$3" ]
     then
         PORTS=1-65535
@@ -112,9 +104,6 @@ function portscan_IPv4-IPv6_WAN(){
 
 function portscan_IPv4_LAN(){
     CMIP4=$1
-    NOW=$(date +"%d_%m_%Y_%R")
-    DIRNAME=$NOW-Portscan
-    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
     if [ -z "$2" ]
     then
         PORTS=1-65535
@@ -133,9 +122,6 @@ function portscan_IPv4_LAN(){
 
 function portscan_IPv6_LAN(){
     CMIP6=$1
-    NOW=$(date +"%d_%m_%Y_%R")
-    DIRNAME=$NOW-Portscan
-    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
     if [ -z "$2" ]
     then
         PORTS=1-65535
@@ -154,9 +140,6 @@ function portscan_IPv6_LAN(){
 
 function portscan_IPv4-IPv6_LAN(){
     CMIP6=$2
-    NOW=$(date +"%d_%m_%Y_%R")
-    DIRNAME=$NOW-Portscan
-    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
     if [ -z "$3" ]
     then
         PORTS=1-65535
@@ -184,9 +167,6 @@ function portscan_IPv4-IPv6_WAN_LAN(){
     LANCMIP6=$2
     WANCMIP4=$3
     WANCMIP6=$4
-    NOW=$(date +"%d_%m_%Y_%R")
-    DIRNAME=$NOW-Portscan
-    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
     if [ -z "$5" ]
     then
         PORTS=1-65535
@@ -222,6 +202,7 @@ function portscan_IPv4-IPv6_WAN_LAN(){
     echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
 }
 
+# This part is visible on the front-end, gives a multiple choice menu and runs the case paired with the made choice
 clear
 PS3='Maak uw keuze: '
 options=("Portscan WAN IPv4" "Portscan WAN IPv6" "Portscan WAN IPv4 and IPv6" "Portscan LAN IPv4" "Portscan LAN IPv6" "Portscan LAN IPv4 and IPv6" "Portscan WAN+LAN IPv4 + IPv6" "Rennen en wegwezen")
@@ -231,13 +212,13 @@ do
         "Portscan WAN IPv4")
             echo "Wat is het IPv4 adres?"
             read IPv4
-            valid_ip4 $IPv4
-            if valid_ip4 $IPv4; then stat='good4'; else stat='bad4'; fi
-            if [ $stat == 'bad4' ]
-            then
-                echo "Invalid IPv4 address"
-                break;
-            fi
+            valid_ip4 $IPv4 #Parses the given IP through the validation function to check if it is not an invalid IPv4
+                if valid_ip4 $IPv4; then stat='good4'; else stat='bad4'; fi
+                if [ $stat == 'bad4' ]
+                then
+                    echo "Invalid IPv4 address"
+                    break;
+                fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
             portscan_IPv4_WAN $IPv4 $Ports
@@ -246,13 +227,13 @@ do
         "Portscan WAN IPv6")
             echo "Wat is het IPv6 adres?"
             read IPv6
-            valid_ip6 $IPv6
-            if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
-            if [ $stat == 'bad6' ]
-            then
-                echo 'Invalid IP6 address'
-                break;
-            fi
+            valid_ip6 $IPv6 #Parses the given IP through the validation function to check if it is not an invalid IPv6
+                if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
+                if [ $stat == 'bad6' ]
+                then
+                    echo 'Invalid IP6 address'
+                    break;
+                fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
             portscan_IPv6_WAN $IPv6 $Ports
@@ -261,22 +242,22 @@ do
         "Portscan WAN IPv4 and IPv6")
             echo "Wat is het IPv4 adres?"
             read IPv4
-            valid_ip4 $IPv4
-            if valid_ip4 $IPv4; then stat='good4'; else stat='bad4'; fi
-            if [ $stat == 'bad4' ]
-            then
-                echo "Invalid IPv4 address"
-                break;
-            fi
+            valid_ip4 $IPv4 #Parses the given IP through the validation function to check if it is not an invalid IPv4
+                if valid_ip4 $IPv4; then stat='good4'; else stat='bad4'; fi
+                if [ $stat == 'bad4' ]
+                then
+                    echo "Invalid IPv4 address"
+                    break;
+                fi
             echo "Wat is het IPv6 adres?"
             read IPv6
-            valid_ip6 $IPv6
-            if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
-            if [ $stat == 'bad6' ]
-            then
-                echo 'Invalid IPv6 address'
-                break;
-            fi
+            valid_ip6 $IPv6 #Parses the given IP through the validation function to check if it is not an invalid IPv6
+                if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
+                if [ $stat == 'bad6' ]
+                then
+                    echo 'Invalid IPv6 address'
+                    break;
+                fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
             portscan_IPv4-IPv6_WAN $IPv4 $IPv6 $Ports
@@ -285,13 +266,13 @@ do
         "Portscan LAN IPv4")
             echo "Wat is het IPv4 adres?"
             read IPv4
-            valid_ip4 $IPv4
-            if valid_ip4 $IPv4; then stat='good4'; else stat='bad4'; fi
-            if [ $stat == 'bad4' ]
-            then
-                echo "Invalid IPv4 address"
-                break;
-            fi
+            valid_ip4 $IPv4 #Parses the given IP through the validation function to check if it is not an invalid IPv4
+                if valid_ip4 $IPv4; then stat='good4'; else stat='bad4'; fi
+                if [ $stat == 'bad4' ]
+                then
+                    echo "Invalid IPv4 address"
+                    break;
+                fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
             portscan_IPv4_LAN $IPv4 $Ports
@@ -300,13 +281,13 @@ do
         "Portscan LAN IPv6")
             echo "Wat is het IPv6 adres?"
             read IPv6
-            valid_ip6 $IPv6
-            if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
-            if [ $stat == 'bad6' ]
-            then
-                echo 'Invalid IPv6 address'
-                break;
-            fi
+            valid_ip6 $IPv6 #Parses the given IP through the validation function to check if it is not an invalid IPv6
+                if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
+                if [ $stat == 'bad6' ]
+                then
+                    echo 'Invalid IPv6 address'
+                    break;
+                fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
             portscan_IPv6_LAN $IPv6 $Ports
@@ -315,22 +296,22 @@ do
         "Portscan LAN IPv4 and IPv6")
             echo "Wat is het IPv4 adres?"
             read IPv4
-            valid_ip4 $IPv4
-            if valid_ip4 $IPv4; then stat='good4'; else stat='bad4'; fi
-            if [ $stat == 'bad4' ]
-            then
-                echo "Invalid IPv4 address"
-                break;
-            fi
+            valid_ip4 $IPv4 #Parses the given IP through the validation function to check if it is not an invalid IPv6
+                if valid_ip4 $IPv4; then stat='good4'; else stat='bad4'; fi
+                if [ $stat == 'bad4' ]
+                then
+                    echo "Invalid IPv4 address"
+                    break;
+                fi
             echo "Wat is het IPv6 adres?"
             read IPv6
-            valid_ip6 $IPv6
-            if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
-            if [ $stat == 'bad6' ]
-            then
-                echo 'Invalid IPv6 address'
-                break;
-            fi
+            valid_ip6 $IPv6 #Parses the given IP through the validation function to check if it is not an invalid IPv6
+                if valid_ip6 $IPv6; then stat='good6'; else stat='bad6'; fi
+                if [ $stat == 'bad6' ]
+                then
+                    echo 'Invalid IPv6 address'
+                    break;
+                fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
             portscan_IPv4-IPv6_LAN $IPv4 $IPv6 $Ports
@@ -339,48 +320,48 @@ do
         "Portscan WAN+LAN IPv4 + IPv6")
             echo "Wat is het IPv4 LAN adres?"
             read IPv4LAN
-            valid_ip4 $IPv4LAN
-            if valid_ip4 $IPv4LAN; then stat='good4'; else stat='bad4'; fi
-            if [ $stat == 'bad4' ]
-            then
-                echo "Invalid IPv4 address"
-                break;
-            fi
+            valid_ip4 $IPv4LAN #Parses the given IP through the validation function to check if it is not an invalid IPv4
+                if valid_ip4 $IPv4LAN; then stat='good4'; else stat='bad4'; fi
+                if [ $stat == 'bad4' ]
+                then
+                    echo "Invalid IPv4 address"
+                    break;
+                fi
             echo "Wat is het IPv6 LAN adres?"
             read IPv6LAN
-            valid_ip6 $IPv6LAN
-            if valid_ip6 $IPv6LAN; then stat='good6'; else stat='bad6'; fi
-            if [ $stat == 'bad6' ]
-            then
-                echo 'Invalid IPv6 address'
-                break;
-            fi
+            valid_ip6 $IPv6LAN #Parses the given IP through the validation function to check if it is not an invalid IPv6
+                if valid_ip6 $IPv6LAN; then stat='good6'; else stat='bad6'; fi
+                if [ $stat == 'bad6' ]
+                then
+                    echo 'Invalid IPv6 address'
+                    break;
+                fi
             echo "Wat is het IPv4 WAN adres?"
             read IPv4WAN
-            valid_ip4 $IPv4WAN
-            if valid_ip4 $IPv4WAN; then stat='good4'; else stat='bad4'; fi
-            if [ $stat == 'bad4' ]
-            then
-                echo echo "Invalid IP4 address"
-                break;
-            fi
+            valid_ip4 $IPv4WAN #Parses the given IP through the validation function to check if it is not an invalid IPv4
+                if valid_ip4 $IPv4WAN; then stat='good4'; else stat='bad4'; fi
+                if [ $stat == 'bad4' ]
+                then
+                    echo echo "Invalid IP4 address"
+                    break;
+                fi
             echo "Wat is het IPv6 WAN adres?"
             read IPv6WAN
-            valid_ip6 $IPv6WAN
-            if valid_ip6 $IPv6WAN; then stat='good6'; else stat='bad6'; fi
-            if [ $stat == 'bad6' ]
-            then
-                echo 'Invalid IPv6 address'
-                break;
-            fi
+            valid_ip6 $IPv6WAN #Parses the given IP through the validation function to check if it is not an invalid IPv6
+                if valid_ip6 $IPv6WAN; then stat='good6'; else stat='bad6'; fi
+                if [ $stat == 'bad6' ]
+                then
+                    echo 'Invalid IPv6 address'
+                    break;
+                fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
             portscan_IPv4-IPv6_WAN_LAN $IPv4LAN $IPv6LAN $IPv4WAN $IPv6WAN $Ports
             break
             ;;
         "Rennen en wegwezen")
-            break
+            break #Choice to end the script early
             ;;
-        *) echo "ongeldige optie $REPLY";;
+        *) echo "ongeldige optie $REPLY";; #any other input that the case dit not account for, will return this echo and retries the prompt
     esac
 done
