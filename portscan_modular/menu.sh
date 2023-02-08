@@ -35,6 +35,197 @@ function valid_ip6()
 
 }
 
+function portscan_IPv4_WAN{
+    CURRENTDIR=$(pwd)
+    CMIP4=$1
+    NOW=$(date +"%d_%m_%Y_%R")
+    DIRNAME=$NOW-Portscan
+    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
+    if [ -z "$2" ]
+    then
+        PORTS=1-65535
+    else
+        PORTS=$2
+    fi
+    mkdir $DIRNAME
+    echo -e "De ipv4 TCP WAN Portscan start nu voor het IPv4 adres $1 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -sS -p $PORTS -P0 $CMIP4 --max-retries=2 -T4 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv4 UDP WAN Portscan start nu voor het IPv4 adres $1 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -sUV -p $PORTS -P0 $CMIP4 -T4 --version-intensity=2 --min-rate=1000 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
+}
+
+function portscan_IPv6_WAN{
+    CURRENTDIR=$(pwd)
+    CMIP6=$1
+    NOW=$(date +"%d_%m_%Y_%R")
+    DIRNAME=$NOW-Portscan
+    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
+    if [ -z "$2" ]
+    then
+        PORTS=1-65535
+    else
+        PORTS=$2
+    fi
+    mkdir $DIRNAME
+    echo -e "De ipv6 TCP WAN Portscan start nu voor het IPv6 adres $2 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -6 -sS -p $PORTS -P0 $CMIP6 -T4 --max-retries=2 -T4 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv6 UDP WAN Portscan start nu voor het IPv6 adres $2 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -6 -sUV -p $PORTS -P0 $CMIP6 -T4 --version-intensity=2 --min-rate=1000  | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
+}
+
+function portscan_IPv4-IPv6_WAN{
+    CURRENTDIR=$(pwd)
+    CMIP4=$1
+    CMIP6=$2
+    NOW=$(date +"%d_%m_%Y_%R")
+    DIRNAME=$NOW-Portscan
+    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
+    if [ -z "$3" ]
+    then
+        PORTS=1-65535
+    else
+        PORTS=$3
+    fi
+    mkdir $DIRNAME
+    echo -e "De ipv4 TCP WAN Portscan start nu voor het IPv4 adres $1 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -sS -p $PORTS -P0 $CMIP4 --max-retries=2 -T4 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv4 UDP WAN Portscan start nu voor het IPv4 adres $1 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -sUV -p $PORTS -P0 $CMIP4 -T4 --version-intensity=2 --min-rate=1000 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+
+    echo -e "De ipv6 TCP WAN Portscan start nu voor het IPv6 adres $2 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -6 -sS -p $PORTS -P0 $CMIP6 -T4 --max-retries=2 -T4 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv6 UDP WAN Portscan start nu voor het IPv6 adres $2 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -6 -sUV -p $PORTS -P0 $CMIP6 -T4 --version-intensity=2 --min-rate=1000  | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
+}
+
+function portscan_IPv4_LAN{
+    CURRENTDIR=$(pwd)
+    CMIP4=$1
+    NOW=$(date +"%d_%m_%Y_%R")
+    DIRNAME=$NOW-Portscan
+    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
+    if [ -z "$2" ]
+    then
+        PORTS=1-65535
+    else
+        PORTS=$2
+    fi
+    mkdir $DIRNAME
+    echo -e "De ipv4 TCP WAN Portscan start nu voor het IPv4 adres $1 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -sS -p $PORTS -P0 $CMIP4 --max-retries=2 -T4 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv4 UDP WAN Portscan start nu voor het IPv4 adres $1 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -sUV -p $PORTS -P0 $CMIP4 -T4 --version-intensity=2 --min-rate=1000 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
+}
+
+function portscan_IPv6_LAN{
+    CURRENTDIR=$(pwd)
+    CMIP6=$1
+    NOW=$(date +"%d_%m_%Y_%R")
+    DIRNAME=$NOW-Portscan
+    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
+    if [ -z "$2" ]
+    then
+        PORTS=1-65535
+    else
+        PORTS=$2
+    fi
+    mkdir $DIRNAME
+    echo -e "De ipv6 TCP WAN Portscan start nu voor het IPv6 adres $2 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -6 -sS -p $PORTS -P0 $CMIP6 -T4 --max-retries=2 -T4 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv6 UDP WAN Portscan start nu voor het IPv6 adres $2 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -6 -sUV -p $PORTS -P0 $CMIP6 -T4 --version-intensity=2 --min-rate=1000  | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
+}
+
+function portscan_IPv4-IPv6_LAN{
+    CURRENTDIR=$(pwd)
+    CMIP4=$1
+    CMIP6=$2
+    NOW=$(date +"%d_%m_%Y_%R")
+    DIRNAME=$NOW-Portscan
+    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
+    if [ -z "$3" ]
+    then
+        PORTS=1-65535
+    else
+        PORTS=$3
+    fi
+    mkdir $DIRNAME
+    echo -e "De ipv4 TCP WAN Portscan start nu voor het IPv4 adres $1 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -sS -p $PORTS -P0 $CMIP4 --max-retries=2 -T4 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv4 UDP WAN Portscan start nu voor het IPv4 adres $1 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -sUV -p $PORTS -P0 $CMIP4 -T4 --version-intensity=2 --min-rate=1000 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv6 TCP WAN Portscan start nu voor het IPv6 adres $2 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -6 -sS -p $PORTS -P0 $CMIP6 -T4 --max-retries=2 -T4 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv6 UDP WAN Portscan start nu voor het IPv6 adres $2 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -6 -sUV -p $PORTS -P0 $CMIP6 -T4 --version-intensity=2 --min-rate=1000  | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
+}
+
+function portscan_IPv4-IPv6_WAN_LAN{
+    CURRENTDIR=$(pwd)
+    LANCMIP4=$1
+    LANCMIP6=$2
+    WANCMIP4=$3
+    WANCMIP6=$4
+    NOW=$(date +"%d_%m_%Y_%R")
+    DIRNAME=$NOW-Portscan
+    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
+    if [ -z "$5" ]
+    then
+        PORTS=1-65535
+    else
+        PORTS=$5
+    fi
+    mkdir $DIRNAME
+    echo -e "De ipv4 TCP LAN Portscan start nu voor het IPv4 adres $1 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -sS -p $PORTS $1 -T4 --min-rate=1000 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv4 UDP LAN Portscan start nu voor het IPv4 adres $1 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -sUV -p $PORTS -P0 $1 -T4 --version-intensity=2 --min-rate=1000 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv6 TCP LAN Portscan start nu voor het IPv6 adres $2 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -6 -sS -p $PORTS -P0 $2 -T4 --max-retries=2 -T4 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv6 UDP LAN Portscan start nu voor het IPv6 adres $2 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -6 -sUV -p $PORTS -P0 $2 -T4 --version-intensity=2 --min-rate=1000  | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
+    echo -e "De ipv4 TCP WAN Portscan start nu voor het IPv4 adres $3 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -sS -p $PORTS -P0 $3 --max-retries=2 -T4 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv4 UDP WAN Portscan start nu voor het IPv4 adres $3 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -sUV -p $PORTS -P0 $3 -T4 --version-intensity=2 --min-rate=1000 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv6 TCP WAN Portscan start nu voor het IPv6 adres $4 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -6 -sS -p $PORTS -P0 $4 -T4 --max-retries=2 -T4 | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De ipv6 UDP WAN Portscan start nu voor het IPv6 adres $4 op de poorten $PORTS\n" | tee -a $FILENAME
+    nmap -6 -sUV -p $PORTS -P0 $4 -T4 --version-intensity=2 --min-rate=1000  | tee -a $FILENAME
+    echo -e "\n---------------------------------------------------------------------------------\n" | tee -a $FILENAME
+    echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
+}
+
 clear
 PS3='Maak uw keuze: '
 options=("Portscan WAN IPv4" "Portscan WAN IPv6" "Portscan WAN IPv4 and IPv6" "Portscan LAN IPv4" "Portscan LAN IPv6" "Portscan LAN IPv4 and IPv6" "Portscan WAN+LAN IPv4 + IPv6" "Rennen en wegwezen")
@@ -53,7 +244,7 @@ do
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
-            ./portscan_IPv4_WAN.sh $IPv4 $Ports
+            portscan_IPv4_WAN $IPv4 $Ports
             break
             ;;
         "Portscan WAN IPv6")
@@ -68,7 +259,7 @@ do
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
-            ./portscan_IPv6_WAN.sh $IPv6 $Ports
+            portscan_IPv6_WAN $IPv6 $Ports
             break
             ;;
         "Portscan WAN IPv4 and IPv6")
@@ -92,7 +283,7 @@ do
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
-            ./portscan_IPv4-IPv6_WAN.sh $IPv4 $IPv6 $Ports
+            portscan_IPv4-IPv6_WAN $IPv4 $IPv6 $Ports
             break
             ;;
         "Portscan LAN IPv4")
@@ -107,7 +298,7 @@ do
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
-            ./portscan_IPv4_LAN.sh $IPv4 $Ports
+            portscan_IPv4_LAN $IPv4 $Ports
             break
             ;;
         "Portscan LAN IPv6")
@@ -122,7 +313,7 @@ do
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
-            ./portscan_IPv6_LAN.sh $IPv6 $Ports
+            portscan_IPv6_LAN $IPv6 $Ports
             break
             ;;
         "Portscan LAN IPv4 and IPv6")
@@ -146,7 +337,7 @@ do
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
-            ./portscan_IPv4-IPv6_LAN.sh $IPv4 $IPv6 $Ports
+            portscan_IPv4-IPv6_LAN $IPv4 $IPv6 $Ports
             break
             ;;
         "Portscan WAN+LAN IPv4 + IPv6")
@@ -188,7 +379,7 @@ do
             fi
             echo "Welke poorten wil je scannen? (Enter = 1-65535)"
             read Ports
-            ./portscan_IPv4-IPv6_WAN_LAN.sh $IPv4LAN $IPv6LAN $IPv4WAN $IPv6WAN $Ports
+            portscan_IPv4-IPv6_WAN_LAN $IPv4LAN $IPv6LAN $IPv4WAN $IPv6WAN $Ports
             break
             ;;
         "Rennen en wegwezen")
