@@ -46,7 +46,7 @@ WANCMIP4=0
 WANCMIP6=0
 NOW=$(date +"%d_%m_%Y_%R")
 DIRNAME=$NOW-Portscan
-$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
+FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
 
 function portscan_IPv4_WAN(){
     CMIP4=$1
