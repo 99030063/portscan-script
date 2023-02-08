@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 function valid_ip4()
 {
     local  ip=$1
@@ -34,6 +36,17 @@ function valid_ip6()
     [[ "${ip}" =~ $re ]] && return 0 || return 1
 
 }
+
+CURRENTDIR=0
+CMIP4=0
+CMIP6=0
+LANCMIP4=0
+LANCMIP6=0
+WANCMIP4=0
+WANCMIP6=0
+NOW=0
+DIRNAME=0
+FILENAME=0
 
 function portscan_IPv4_WAN{
     CURRENTDIR=$(pwd)
