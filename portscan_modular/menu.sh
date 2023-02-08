@@ -44,15 +44,12 @@ LANCMIP4=0
 LANCMIP6=0
 WANCMIP4=0
 WANCMIP6=0
-NOW=0
-DIRNAME=0
-FILENAME=0
+NOW=$(date +"%d_%m_%Y_%R")
+DIRNAME=$NOW-Portscan
+$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
 
-function portscan_IPv4_WAN{
+function portscan_IPv4_WAN(){
     CMIP4=$1
-    NOW=$(date +"%d_%m_%Y_%R")
-    DIRNAME=$NOW-Portscan
-    FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
     if [ -z "$2" ]
     then
         PORTS=1-65535
@@ -69,7 +66,7 @@ function portscan_IPv4_WAN{
     echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
 }
 
-function portscan_IPv6_WAN{
+function portscan_IPv6_WAN(){
     CMIP6=$1
     NOW=$(date +"%d_%m_%Y_%R")
     DIRNAME=$NOW-Portscan
@@ -90,7 +87,7 @@ function portscan_IPv6_WAN{
     echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
 }
 
-function portscan_IPv4-IPv6_WAN{
+function portscan_IPv4-IPv6_WAN(){
     CMIP4=$1
     CMIP6=$2
     NOW=$(date +"%d_%m_%Y_%R")
@@ -119,7 +116,7 @@ function portscan_IPv4-IPv6_WAN{
     echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
 }
 
-function portscan_IPv4_LAN{
+function portscan_IPv4_LAN(){
     CMIP4=$1
     NOW=$(date +"%d_%m_%Y_%R")
     DIRNAME=$NOW-Portscan
@@ -140,7 +137,7 @@ function portscan_IPv4_LAN{
     echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
 }
 
-function portscan_IPv6_LAN{
+function portscan_IPv6_LAN(){
     CMIP6=$1
     NOW=$(date +"%d_%m_%Y_%R")
     DIRNAME=$NOW-Portscan
@@ -161,7 +158,7 @@ function portscan_IPv6_LAN{
     echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
 }
 
-function portscan_IPv4-IPv6_LAN{
+function portscan_IPv4-IPv6_LAN(){
     CMIP6=$2
     NOW=$(date +"%d_%m_%Y_%R")
     DIRNAME=$NOW-Portscan
@@ -188,7 +185,7 @@ function portscan_IPv4-IPv6_LAN{
     echo -e "De portscans zijn afgerond, de resultaten staan in de map $FILENAME"
 }
 
-function portscan_IPv4-IPv6_WAN_LAN{
+function portscan_IPv4-IPv6_WAN_LAN(){
     LANCMIP4=$1
     LANCMIP6=$2
     WANCMIP4=$3
