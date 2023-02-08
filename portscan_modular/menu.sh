@@ -49,7 +49,7 @@ DIRNAME=0
 FILENAME=0
 
 function portscan_IPv4_WAN{
-    CURRENTDIR=$pwd
+    CURRENTDIR=$PWD
     CMIP4=$1
     NOW=$(date +"%d_%m_%Y_%R")
     DIRNAME=$NOW-Portscan
@@ -71,7 +71,7 @@ function portscan_IPv4_WAN{
 }
 
 function portscan_IPv6_WAN{
-    CURRENTDIR=$pwd
+    CURRENTDIR=$PWD
     CMIP6=$1
     NOW=$(date +"%d_%m_%Y_%R")
     DIRNAME=$NOW-Portscan
@@ -93,7 +93,7 @@ function portscan_IPv6_WAN{
 }
 
 function portscan_IPv4-IPv6_WAN{
-    CURRENTDIR=$pwd
+    CURRENTDIR=$PWD
     CMIP4=$1
     CMIP6=$2
     NOW=$(date +"%d_%m_%Y_%R")
@@ -123,7 +123,7 @@ function portscan_IPv4-IPv6_WAN{
 }
 
 function portscan_IPv4_LAN{
-    CURRENTDIR=$pwd
+    CURRENTDIR=$PWD
     CMIP4=$1
     NOW=$(date +"%d_%m_%Y_%R")
     DIRNAME=$NOW-Portscan
@@ -145,7 +145,7 @@ function portscan_IPv4_LAN{
 }
 
 function portscan_IPv6_LAN{
-    CURRENTDIR=$pwd
+    CURRENTDIR=$PWD
     CMIP6=$1
     NOW=$(date +"%d_%m_%Y_%R")
     DIRNAME=$NOW-Portscan
@@ -167,7 +167,7 @@ function portscan_IPv6_LAN{
 }
 
 function portscan_IPv4-IPv6_LAN{
-    CURRENTDIR=$pwd
+    CURRENTDIR=$PWD
     CMIP6=$2
     NOW=$(date +"%d_%m_%Y_%R")
     DIRNAME=$NOW-Portscan
@@ -195,7 +195,7 @@ function portscan_IPv4-IPv6_LAN{
 }
 
 function portscan_IPv4-IPv6_WAN_LAN{
-    CURRENTDIR=$pwd
+    CURRENTDIR=$PWD
     LANCMIP4=$1
     LANCMIP6=$2
     WANCMIP4=$3
