@@ -38,12 +38,6 @@ function valid_ip6()
 }
 
 CURRENTDIR=$(pwd)
-CMIP4=0
-CMIP6=0
-LANCMIP4=0
-LANCMIP6=0
-WANCMIP4=0
-WANCMIP6=0
 NOW=$(date +"%d_%m_%Y_%R")
 DIRNAME=$NOW-Portscan
 FILENAME=$CURRENTDIR/$DIRNAME/$NOW-portscan.txt
